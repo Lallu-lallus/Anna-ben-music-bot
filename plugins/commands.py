@@ -1,20 +1,3 @@
-"""
-RadioPlayerV2, Telegram Voice Chat Bot
-Copyright (C) 2021  Asm Safone <https://t.me/AsmSafone>
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>
-"""
 
 
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -22,16 +5,17 @@ from pyrogram import Client, filters
 
 
 
-HOME_TEXT = "👋🏻 **Hi [{}](tg://user?id={})**,\n\nI'm **Radio Player Bot** \nI Can Play Radio/Stream Music In Channels & Groups 24x7 Nonstop. Made with ❤️ By @AsmSafone!"
+HOME_TEXT = "👋🏻 **Hi [{}](tg://user?id={})**,\n\nI'm **𝐀𝐧𝐧𝐚 𝐁𝐞𝐧 𝐌𝐮𝐬𝐢𝐜 𝐁𝐨𝐭** \n 𝙸 𝚌𝚊𝚗 𝚙𝚕𝚊𝚢 𝚛𝚊𝚍𝚒𝚘/𝚜𝚝𝚛𝚎𝚊𝚖𝚎 𝙰𝚗𝚍 𝙸 𝚊𝚖 𝚊𝚖𝚞𝚜𝚒𝚌 𝚋𝚘𝚝 𝚊𝚗𝚍 𝚢𝚝 𝚟𝚒𝚍𝚎𝚘 𝚍𝚘𝚠𝚗𝚕𝚘𝚊𝚍𝚎𝚛 𝚋𝚘𝚝 𝙸 𝚊𝚖 𝚘𝚗𝚕𝚢 𝚠𝚘𝚛𝚔 𝚊𝚝 𝚖𝚞𝚜𝚒𝚌 𝚠𝚘𝚛𝚕𝚍 𝚐𝚛𝚘𝚞𝚙 𝑀𝑎𝑑𝑒 𝑤𝑖𝑡ℎ ❤️ 𝐵𝑦 @Lallu_tg!"
 HELP = """🏷️ **Need Help?** 🤔
-__(Join @SafoTheBot For Support)__
+__(Join @Annaben_support For Support)__
 
 🏷️ **Common Commands**:
-\u2022 `/play` reply to an audio to play or queue it
-\u2022 `/help` shows help for commands
-\u2022 `/playlist` shows the playlist
-\u2022 `/current` shows playing time of current track
-\u2022 `/song` [song name] download the song as audio
+\u2022 `/play` reply to an audio to play or queue it @music_wrld_grp
+\u2022 `/help` shows help for commands 
+\u2022 `/playlist` shows the playlist @music_wrld_grp
+\u2022 `/current` shows playing time of current track @music_wrld_grp
+\u2022 `/song` [song name] download the song as audio @music_wrld_grp
+\u2022 `/video` [yt video link] download the yt videos only @music_wrld_grp
 
 🏷️ **Admin Commands**:
 \u2022 `/skip` [n] skip current or n where n >= 2
@@ -49,7 +33,7 @@ __(Join @SafoTheBot For Support)__
 \u2022 `/unmute` unmute the VC userbot
 \u2022 `/restart` restart the bot
 
-🏷️ **Developer: @I_Am_Only_One_1** 👑
+🏷️ **Developer: @Lallu_tg** 👑
 """
 
 
@@ -57,12 +41,12 @@ __(Join @SafoTheBot For Support)__
 async def start(client, message):
     buttons = [
         [
-        InlineKeyboardButton('CHANNEL', url='https://t.me/AsmSafone'),
-        InlineKeyboardButton('SUPPORT', url='https://t.me/SafoTheBot'),
+        InlineKeyboardButton('ᴄʜᴀɴɴᴇʟ', url='https://t.me/team_annaben'),
+        InlineKeyboardButton('sᴜᴘᴘᴏʀᴛ', url='https://t.me/Annaben_support'),
     ],
     [
-        InlineKeyboardButton('MORE BOTS', url='https://t.me/AsmSafone/12'),
-        InlineKeyboardButton('SOURCE CODE', url='https://github.com/AsmSafone/RadioPlayerV2'),
+        InlineKeyboardButton('ᴍᴏʀᴇ ʙᴏᴛs', url='https://t.me/tg_bots_updates'),
+        InlineKeyboardButton('ᴅᴇᴠ', url='https://t.me/lallu_tg'),
     ],
     [
         InlineKeyboardButton('⚙️ HELP ⚙️', callback_data='help'),
