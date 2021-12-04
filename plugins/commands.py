@@ -49,7 +49,7 @@ async def start(client, message):
         InlineKeyboardButton('ᴅᴇᴠ', url='https://t.me/lallu_tg'),
     ],
     [
-        InlineKeyboardButton('⚙️ HELP ⚙️', callback_data='help'),
+        InlineKeyboardButton('ʜᴇʟᴘ', callback_data='help'),
         
     ]
     ]
