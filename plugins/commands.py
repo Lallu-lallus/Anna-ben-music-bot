@@ -1,5 +1,5 @@
 
-
+import random
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram import Client, filters
 
@@ -35,7 +35,7 @@ __(Join @Annaben_support For Support)__
 
 🏷️ **Developer: @Lallu_tg** 👑
 """
-
+PIC = " "
 
 @Client.on_message(filters.command('start'))
 async def start(client, message):
@@ -54,7 +54,7 @@ async def start(client, message):
     ]
     ]
     reply_markup = InlineKeyboardMarkup(buttons)
-    await message.reply(HOME_TEXT.format(message.from_user.first_name, message.from_user.id), reply_markup=reply_markup)
+    await message.reply_photo(photo=random.choice(PIC), caption=HOME_TEXT.format(message.from_user.first_name, message.from_user.id), reply_markup=reply_markup)
 
 
 
