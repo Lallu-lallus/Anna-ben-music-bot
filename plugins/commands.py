@@ -35,10 +35,9 @@ __(Join @Annaben_support For Support)__
 
 🏷️ **Developer: @Lallu_tg** 👑
 """
-PIC = "https://telegra.ph/file/8f06df481d8722f502855.jpg"
 
 @Client.on_message(filters.command('start'))
-async def start(client, message, cmd):
+async def start(client, message):
     buttons = [
         [
         InlineKeyboardButton('ᴄʜᴀɴɴᴇʟ', url='https://t.me/team_annaben'),
@@ -54,7 +53,7 @@ async def start(client, message, cmd):
     ]
     ]
     reply_markup = InlineKeyboardMarkup(buttons)
-    await cmd.reply_photo(photo="https://telegra.ph/file/8f06df481d8722f502855.jpg", caption=HOME_TEXT.format(message.from_user.first_name, message.from_user.id), reply_markup=reply_markup)
+    await message.reply(HOME_TEXT.format(message.from_user.first_name, message.from_user.id), reply_markup=reply_markup)
 
 
 
