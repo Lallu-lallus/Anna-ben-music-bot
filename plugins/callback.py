@@ -159,11 +159,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
         except:
             pass
     elif query.data=="help":
-        await query.edit_message_text("🙋‍♂️ **Hi Bruh**, \nJust Send Me An Audio File To Play. You Can Use @SafoneMusicBot To Get Audio Files! 😌\n\nCheck /help To Know More ...",
+        await query.edit_message_text("🙋‍♂️ **Hi Bruh**, \n Here is the command for my help text! 😌\n\nCheck /help To Know More ...",
         reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("Close 🔐", callback_data="close"),
+                        InlineKeyboardButton("ʏᴛ ᴠɪᴅᴇᴏ", callback_data="yt"
+                        InlineKeyboardButton("ᴠᴄ ᴘʟᴀʏ", callback_data="vc"),
+                        InlineKeyboardButton("sᴏɴɢ", callback_data="song"),
+                        InlineKeyboardButton("⚠︎ᴄʟᴏsᴇ", callback_data="close")
                     ],
                 ]
             )
@@ -171,4 +174,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         
     elif query.data=="close":
         await query.message.delete()
+
+    elif query.data=="song":
+        await query.edit_message_text("🙋‍♂️ **Hi Bruh**, \n Here is the commands for song \n\n Download your fav songs🙂 \n\n 𝐔𝐒𝐔𝐀𝐋 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒 \n\n /song (song name) or /mp3
 
