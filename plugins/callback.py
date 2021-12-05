@@ -160,7 +160,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.delete()
                   
     elif query.data=="song":
-        await query.edit_message_text("🙋‍♂️ **Hi Bruh**, \n Here is the commands for song \n\n Download your fav songs🙂 \n\n 𝐔𝐒𝐔𝐀𝐋 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒 \n\n /song (song name) or /mp3"
+        await query.edit_message_text("🙋‍♂️ **Hi Bruh**, \n Here is the commands for song \n\n Download your fav songs🙂 \n\n 𝐔𝐒𝐔𝐀𝐋 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒 \n\n /song (song name) or /mp3",
         reply_markup=InlineKeyboardMarkup(
                [ 
                    [
