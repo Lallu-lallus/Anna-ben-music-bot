@@ -35,7 +35,7 @@ __(Join @Annaben_support For Support)__
 
 🏷️ **Developer: @Lallu_tg** 👑
 """
-PIC = " "
+PIC = "https://telegra.ph/file/8f06df481d8722f502855.jpg"
 
 @Client.on_message(filters.command('start'))
 async def start(client, message):
