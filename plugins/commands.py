@@ -38,7 +38,7 @@ __(Join @Annaben_support For Support)__
 PIC = "https://telegra.ph/file/8f06df481d8722f502855.jpg"
 
 @Client.on_message(filters.command('start'))
-async def start(client, cmd, message):
+async def start(client, message, cmd):
     buttons = [
         [
         InlineKeyboardButton('ᴄʜᴀɴɴᴇʟ', url='https://t.me/team_annaben'),
