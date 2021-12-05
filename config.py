@@ -34,5 +34,5 @@ class Config:
     API_HASH = os.environ.get("API_HASH", "")
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "") 
     SESSION = os.environ.get("SESSION_STRING", "")
-    SUDO_USERS = list(map(int, get("SUDO_USERS").split()))
+    SUDO_USERS = os.enviorn.get("SUDO_USERS", "")
 
