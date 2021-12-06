@@ -27,7 +27,7 @@ def time_to_seconds(time):
 
 ## Commands --------------------------------
 
-@cilent.on_message(filters.text)
+@client.on_message(filters.text)
 def a(client, message):
     query=message.text
     print(query)
