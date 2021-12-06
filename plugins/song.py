@@ -18,61 +18,77 @@ from youtube_search import YoutubeSearch
 import requests
 
 ## Extra Fns -------------------------------
-@Client.on_message(filters.command("s", "song") & ~filters.channel)
-def song(client, message):
 
-    user_id = message.from_user.id
-    user_name = message.from_user.first_name
-    rpk = "[" + user_name + "](tg://user?id=" + str(user_id) + ")"
+# Convert hh:mm:ss to seconds
+def time_to_seconds(time):
+    stringt = str(time)
+    return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
 
-    query = ""
+
+## Commands --------------------------------
+
+@Client.on_message(filters.command(["song", "mp3"]) & ~filters.channel & ~filters.edited)
+def a(client, message):
+    query = ''
     for i in message.command[1:]:
-        query += " " + str(i)
+        query += ' ' + str(i)
     print(query)
-    m = message.reply("🔎 ғɪɴᴅɪɴɢ ᴛʜᴇ sᴏɴɢ...[💞](https://telegra.ph/file/8f06df481d8722f502855.jpg)")
+    m = message.reply('`🎧𝐅𝐢𝐧𝐝𝐢𝐧𝐠 𝐲𝐨𝐮𝐫 𝐬𝐨𝐧𝐠.....`')
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
-        results = YoutubeSearch(query, max_results=1).to_dict()
-        link = f"https://youtube.com{results[0]['url_suffix']}"
-        # print(results)
-        title = results[0]["title"][:40]
-        thumbnail = results[0]["thumbnails"][0]
-        thumb_name = f"thumb{title}.jpg"
-        thumb = requests.get(thumbnail, allow_redirects=True)
-        open(thumb_name, "wb").write(thumb.content)
+        results = []
+        count = 0
+        while len(results) == 0 and count < 6:
+            if count>0:
+                time.sleep(1)
+            results = YoutubeSearch(query, max_results=1).to_dict()
+            count += 1
+        # results = YoutubeSearch(query, max_results=1).to_dict()
+        try:
+            link = f"https://youtube.com{results[0]['url_suffix']}"
+            # print(results)
+            title = results[0]["title"]
+            thumbnail = results[0]["thumbnails"][0]
+            duration = results[0]["duration"]
+            views = results[0]["views"]
 
-        duration = results[0]["duration"]
-        results[0]["url_suffix"]
-        results[0]["views"]
+            ## UNCOMMENT THIS IF YOU WANT A LIMIT ON DURATION. CHANGE 1800 TO YOUR OWN PREFFERED DURATION AND EDIT THE MESSAGE (30 minutes cap) LIMIT IN SECONDS
+            # if time_to_seconds(duration) >= 1800:  # duration limit
+            #     m.edit("Exceeded 30mins cap")
+            #     return
 
+            performer = f"[𝐌𝐨𝐯𝐢𝐞𝐬 𝐰𝐨𝐫𝐥𝐝]" 
+            thumb_name = f'thumb{message.message_id}.jpg'
+            thumb = requests.get(thumbnail, allow_redirects=True)
+            open(thumb_name, 'wb').write(thumb.content)
+
+        except Exception as e:
+            print(e)
+            m.edit('**𝐅𝐨𝐮𝐧𝐝 𝐋𝐢𝐭𝐞𝐫𝐚𝐫𝐫𝐲 𝐍𝐨𝐭𝐢𝐧𝐠. 𝐏𝐥𝐞𝐚𝐬𝐞 𝐓𝐫𝐲 𝐀𝐧𝐨𝐭𝐡𝐞𝐫 𝐒𝐨𝐧𝐠 𝐨𝐫 𝐔𝐬𝐞 𝐂𝐨𝐫𝐫𝐞𝐜𝐭 𝐬𝐩𝐞𝐥𝐥𝐢𝐧𝐠.**')
+            return
     except Exception as e:
-        m.edit("❌ ғᴏᴜɴᴅ ɴᴏᴛʜɪɴɢ.\n\n ᴛʀʏ ᴀɴᴏᴛʜᴇʀ ᴋᴇʏᴡᴏʀᴋ ᴏʀ ᴍᴀʏʙᴇ sᴘᴇʟʟ ɪᴛ ᴘʀᴏᴘᴇʀʟʏ.")
+        m.edit(
+            "**𝐄𝐧𝐭𝐞𝐫 𝐒𝐨𝐧𝐠 𝐍𝐚𝐦𝐞  𝐰𝐢𝐭𝐡 𝐂𝐨𝐦𝐦𝐚𝐧𝐝**❗\n𝐅𝐨𝐫 𝐄𝐱𝐚𝐦𝐩𝐥𝐞: `/song Alone marshmellow`"
+        )
         print(str(e))
         return
-    m.edit("🎸ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ ʏᴏᴜʀ sᴏɴɢ......[💞](https://telegra.ph/file/8f06df481d8722f502855.jpg)")
+    m.edit("`🎸𝐔𝐩𝐥𝐨𝐚𝐝𝐢𝐧𝐠.....💞𝐏𝐥𝐞𝐚𝐬𝐞 𝐰𝐚𝐢𝐭𝐞`")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = "**🎵 ᴜᴘʟᴏᴀᴅᴇᴅ ʙʏ @Music_wrld_grp \n\n ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ @lallutg**"
-        secmul, dur, dur_arr = 1, 0, duration.split(":")
-        for i in range(len(dur_arr) - 1, -1, -1):
-            dur += int(dur_arr[i]) * secmul
+        rep = f'🎸 <b>𝐓𝐢𝐭𝐥𝐞:</b> <a href="{link}">{title}</a>\n🎙️ <b>𝐃𝐮𝐫𝐚𝐭𝐢𝐨𝐧:</b> <code>{duration}</code>\n🎧 <b>𝐕𝐢𝐞𝐰𝐬:</b> <code>{views}</code>\n🎷 <b>𝐑𝐞𝐪𝐮𝐞𝐬𝐭𝐞𝐝 𝐛𝐲:</b> {message.from_user.mention()}'
+        secmul, dur, dur_arr = 1, 0, duration.split(':')
+        for i in range(len(dur_arr)-1, -1, -1):
+            dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
-        message.reply_audio(
-            audio_file,
-            caption=rep,
-            thumb=thumb_name,
-            parse_mode="md",
-            title=title,
-            duration=dur,
-        )
+        message.reply_audio(audio_file, caption=rep, parse_mode='HTML',quote=False, title=title, duration=dur, performer=performer, thumb=thumb_name)
         m.delete()
+        message.delete()
     except Exception as e:
-        m.edit("❌ Error")
+        m.edit('**An Error Occured. Please Report This To** @jospsupport !!')
         print(e)
-
     try:
         os.remove(audio_file)
         os.remove(thumb_name)
@@ -84,12 +100,11 @@ def get_text(message: Message) -> [None, str]:
     text_to_return = message.text
     if message.text is None:
         return None
-    if " " in text_to_return:
-        try:
-            return message.text.split(None, 1)[1]
-        except IndexError:
-            return None
-    else:
+    if " " not in text_to_return:
+        return None
+    try:
+        return message.text.split(None, 1)[1]
+    except IndexError:
         return None
 
 
@@ -117,10 +132,11 @@ async def progress(current, total, message, start, type_of_ps, file_name=None):
         time_to_completion = round((total - current) / speed) * 1000
         estimated_total_time = elapsed_time + time_to_completion
         progress_str = "{0}{1} {2}%\n".format(
-            "".join(["🔴" for i in range(math.floor(percentage / 10))]),
-            "".join(["🔘" for i in range(10 - math.floor(percentage / 10))]),
+            "".join("◈" for i in range(math.floor(percentage / 10))),
+            "".join("◇" for i in range(10 - math.floor(percentage / 10))),
             round(percentage, 2),
         )
+
         tmp = progress_str + "{0} of {1}\nETA: {2}".format(
             humanbytes(current), humanbytes(total), time_formatter(estimated_total_time)
         )
@@ -143,15 +159,12 @@ async def progress(current, total, message, start, type_of_ps, file_name=None):
 
 
 def get_user(message: Message, text: str) -> [int, str, None]:
-    if text is None:
-        asplit = None
-    else:
-        asplit = text.split(" ", 1)
+    asplit = None if text is None else text.split(" ", 1)
     user_s = None
     reason_ = None
     if message.reply_to_message:
         user_s = message.reply_to_message.from_user.id
-        reason_ = text if text else None
+        reason_ = text or None
     elif asplit is None:
         return None, None
     elif len(asplit[0]) > 0:
@@ -166,26 +179,19 @@ def get_readable_time(seconds: int) -> int:
     ping_time = ""
     time_list = []
     time_suffix_list = ["s", "m", "h", "days"]
-
     while count < 4:
         count += 1
-        if count < 3:
-            remainder, result = divmod(seconds, 60)
-        else:
-            remainder, result = divmod(seconds, 24)
+        remainder, result = divmod(seconds, 60) if count < 3 else divmod(seconds, 24)
         if seconds == 0 and remainder == 0:
             break
         time_list.append(int(result))
         seconds = int(remainder)
-
     for x in range(len(time_list)):
         time_list[x] = str(time_list[x]) + time_suffix_list[x]
     if len(time_list) == 4:
         ping_time += time_list.pop() + ", "
-
     time_list.reverse()
     ping_time += ":".join(time_list)
-
     return ping_time
 
 
@@ -202,19 +208,6 @@ def time_formatter(milliseconds: int) -> str:
         + ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
     )
     return tmp[:-2]
-
-
-ydl_opts = {
-    "format": "bestaudio/best",
-    "writethumbnail": True,
-    "postprocessors": [
-        {
-            "key": "FFmpegExtractAudio",
-            "preferredcodec": "mp3",
-            "preferredquality": "192",
-        }
-    ],
-}
 
 
 def get_file_extension_from_url(url):
@@ -243,44 +236,7 @@ def time_to_seconds(time):
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(":"))))
 
 
-@Client.on_message(filters.command("saavn") & ~filters.edited)
-async def jssong(_, message):
-    global is_downloading
-    if len(message.command) < 2:
-        await message.reply_text("/saavn requires an argument.")
-        return
-    if is_downloading:
-        await message.reply_text(
-            "Another download is in progress, try again after sometime."
-        )
-        return
-    is_downloading = True
-    text = message.text.split(None, 1)[1]
-    query = text.replace(" ", "%20")
-    m = await message.reply_text("Searching...")
-    try:
-        songs = await arq.saavn(query)
-        if not songs.ok:
-            await message.reply_text(songs.result)
-            return
-        sname = songs.result[0].song
-        slink = songs.result[0].media_url
-        ssingers = songs.result[0].singers
-        await m.edit("Downloading")
-        song = await download_song(slink)
-        await m.edit("Uploading")
-        await message.reply_audio(audio=song, title=sname, performer=ssingers)
-        os.remove(song)
-        await m.delete()
-    except Exception as e:
-        is_downloading = False
-        await m.edit(str(e))
-        return
-    is_downloading = False
-
-
-
-@Client.on_message(filters.command(["video", "v"]))
+@Client.on_message(filters.command(["video", "mp4"]))
 async def vsong(client, message: Message):
     urlissed = get_text(message)
 
