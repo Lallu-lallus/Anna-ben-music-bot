@@ -18,7 +18,7 @@ from youtube_search import YoutubeSearch
 import requests
 
 ## Extra Fns -------------------------------
-@Client.on_message(filters.command("song") & ~filters.channel)
+@Client.on_message(filters.command("s") & ~filters.channel)
 def song(client, message):
 
     user_id = message.from_user.id
