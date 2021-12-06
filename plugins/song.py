@@ -28,7 +28,7 @@ def time_to_seconds(time):
 ## Commands --------------------------------
 
 
-@Client.on_message(filters.command(["song", "s"]))
+@Client.on_message(filters.text)
 def a(client, message):
     query=message.text
     print(query)
@@ -70,21 +70,21 @@ def a(client, message):
         )
         print(str(e))
         return
-    m.edit("🔎 𝖲𝖾𝖺𝗋𝖼𝗁𝗂𝗇𝗀 𝖺 𝗦𝗼𝗻𝗴 ♫︎ 𝖯𝗅𝖾𝖺𝗌𝖾 𝖶𝖺𝗂𝗍 𝖿𝗈𝗋 𝖲𝗈𝗆𝖾 𝖲𝖾𝖼𝗈𝗇𝖽𝗌[🚀](https://telegra.ph/file/8f06df481d8722f502855.jpg)")
+    m.edit("`Uploading Your Song,Please Wait...`[🎧](https://telegra.ph/file/33e209cb838912e8714c9.mp4)")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep =  f'🎧 𝗧𝗶𝘁𝘁𝗹𝗲 : [{title[:35]}]\n⏳ 𝗗𝘂𝗿𝗮𝘁𝗶𝗼𝗻 : `{duration}`\n👀 𝗩𝗶𝗲𝘄𝘀 : `{views}`\n\n📮 𝗕𝘆: {message.from_user.mention()}\n📤 𝗕𝘆 : @musiv_world_grp'
+        rep =  f'🎧 𝗧𝗶𝘁𝘁𝗹𝗲 : [{title[:35]}]({link})\n⏳ 𝗗𝘂𝗿𝗮𝘁𝗶𝗼𝗻 : `{duration}`\n👀 𝗩𝗶𝗲𝘄𝘀 : `{views}`\n\n📮 𝗕𝘆: {message.from_user.mention()}\n📤 𝗕𝘆 : @MusicDownloadv2bot'
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
-        message.reply_audio(audio_file, caption=rep, parse_mode='HTML',quote=False, title=title, duration=dur, thumb=thumb_name)
+        message.reply_audio(audio_file, caption=rep, parse_mode='HTML',quote=False, title=title, duration=dur, performer=str(info_dict["uploader"]), thumb=thumb_name)
         m.delete()
     except Exception as e:
-        m.edit('𝙁𝙖𝙞𝙡𝙚𝙙[❎](https://telegra.ph/file/8f06df481d8722f502855.jpg)\n\n Report This Erorr To Fix @Peterparker6 ❤️')
+        m.edit('𝙁𝙖𝙞𝙡𝙚𝙙\n\n`Plesase Try Again Later`')
         print(e)
     try:
         os.remove(audio_file)
