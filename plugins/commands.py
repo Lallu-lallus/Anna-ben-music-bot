@@ -5,7 +5,7 @@ from pyrogram import Client, filters
 
 
 
-HOME_TEXT = "👋🏻 **Hi [{}](tg://user?id={})**,\n\nI'm <a href='https://telegra.ph/file/8f06df481d8722f502855.jpg'>𝐀𝐍𝐍𝐀 𝐁𝐄𝐍</a>** \n 𝙸 𝚌𝚊𝚗 𝚙𝚕𝚊𝚢 𝚛𝚊𝚍𝚒𝚘/𝚜𝚝𝚛𝚎𝚊𝚖𝚎 𝙰𝚗𝚍 𝙸 𝚊𝚖 𝚊𝚖𝚞𝚜𝚒𝚌 𝚋𝚘𝚝 𝚊𝚗𝚍 𝚢𝚝 𝚟𝚒𝚍𝚎𝚘 𝚍𝚘𝚠𝚗𝚕𝚘𝚊𝚍𝚎𝚛 𝚋𝚘𝚝 𝙸 𝚊𝚖 𝚘𝚗𝚕𝚢 𝚠𝚘𝚛𝚔 𝚊𝚝 𝚖𝚞𝚜𝚒𝚌 𝚠𝚘𝚛𝚕𝚍 𝚐𝚛𝚘𝚞𝚙 𝑀𝑎𝑑𝑒 𝑤𝑖𝑡ℎ ❤️ 𝐵𝑦 @Lallu_tg!"
+HOME_TEXT = "👋🏻 **Hi [{}](tg://user?id={})**,\n\nI'm <a href='https://telegra.ph/file/8f06df481d8722f502855.jpg'>sᴏɴɢ ᴘʟᴀʏ ʙᴏᴛ</a>** \n 𝙸 𝚌𝚊𝚗 𝚙𝚕𝚊𝚢 𝚛𝚊𝚍𝚒𝚘/𝚜𝚝𝚛𝚎𝚊𝚖𝚎 𝙰𝚗𝚍 𝙸 𝚊𝚖 𝚊𝚖𝚞𝚜𝚒𝚌 𝚋𝚘𝚝 𝚊𝚗𝚍 𝚢𝚝 𝚟𝚒𝚍𝚎𝚘 𝚍𝚘𝚠𝚗𝚕𝚘𝚊𝚍𝚎𝚛 𝚋𝚘𝚝 𝙸 𝚊𝚖 𝚘𝚗𝚕𝚢 𝚠𝚘𝚛𝚔 𝚊𝚝 𝚖𝚞𝚜𝚒𝚌 𝚠𝚘𝚛𝚕𝚍 𝚐𝚛𝚘𝚞𝚙 𝑀𝑎𝑑𝑒 𝑤𝑖𝑡ℎ ❤️ 𝐵𝑦 @Lallu_tg!"
 HELP = """🏷️ **Need Help?** 🤔
 __(Join @Annaben_support For Support)__
 
