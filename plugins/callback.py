@@ -166,7 +166,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
                [ 
                    [
-                        InlinekeyboardButton("⚠︎ᴄʟᴏsᴇ", callback_data="close")
+                        InlineKeyboardButton("⚠︎ᴄʟᴏsᴇ", callback_data="close")
                    ],
                ]
             )
