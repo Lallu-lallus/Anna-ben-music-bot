@@ -18,7 +18,7 @@ from youtube_search import YoutubeSearch
 import requests
 
 ## Extra Fns -------------------------------
-@Client.on_message(filters.command("s") & ~filters.channel)
+@Client.on_message(filters.command("s", "song") & ~filters.channel)
 def song(client, message):
 
     user_id = message.from_user.id
@@ -280,7 +280,7 @@ async def jssong(_, message):
 
 
 
-@Client.on_message(filters.command(["video", "mp4"]))
+@Client.on_message(filters.command(["video", "v"]))
 async def vsong(client, message: Message):
     urlissed = get_text(message)
 
