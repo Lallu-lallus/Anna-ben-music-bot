@@ -84,7 +84,7 @@ def a(client, message):
         rep = f'❍📖 <b>ᴛɪᴛʟᴇ:</b> <a href="{link}">{title}</a>\n❍⌚ <b>ᴅᴜʀᴀᴛɪᴏɴ:</b> <code>{duration}</code>\n❍📤 <b>ᴜᴘʟᴏᴀᴅᴇᴅ ʙʏ:</b>@music_wrld_grp'
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
-            dur += (int(dur_arr[i]) * secmul)<
+            dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
         message.reply_audio(audio_file, caption=rep, parse_mode='HTML',quote=False, title=title, duration=dur, performer=performer, thumb=thumb_name)
         m.delete()
