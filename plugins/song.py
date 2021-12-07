@@ -15,7 +15,7 @@ from youtubesearchpython import SearchVideos
 from yt_dlp import YoutubeDL
 import youtube_dl
 from youtube_search import YoutubeSearch
-from plugins.modules.play import arq
+
 
 import requests
 
