@@ -28,7 +28,7 @@ def time_to_seconds(time):
 ## Commands --------------------------------
 
 
-@Client.on_message(filters.text)
+@Client.on_message(filters.command(["song", "s"]))
 def a(client, message):
     query=message.text
     print(query)
@@ -70,13 +70,13 @@ def a(client, message):
         )
         print(str(e))
         return
-    m.edit("`Uploading Your Song,Please Wait...`[🎧](https://telegra.ph/file/33e209cb838912e8714c9.mp4)")
+    m.edit("`🎸𝐼 𝐹𝑜𝑢𝑛𝑑 𝑎 𝑠𝑜𝑛𝑔 𝑝𝑙𝑒𝑎𝑠𝑒 𝑤𝑎𝑖𝑡𝑒 𝐼 𝑢𝑝𝑙𝑜𝑎𝑑𝑖𝑛𝑔 𝑖𝑡.....`")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep =  f'🎧 𝗧𝗶𝘁𝘁𝗹𝗲 : [{title[:35]}]({link})\n⏳ 𝗗𝘂𝗿𝗮𝘁𝗶𝗼𝗻 : `{duration}`\n👀 𝗩𝗶𝗲𝘄𝘀 : `{views}`\n\n📮 𝗕𝘆: {message.from_user.mention()}\n📤 𝗕𝘆 : @Movie_wrld_grp'
+        rep =  f'🎧 𝗧𝗶𝘁𝘁𝗹𝗲 : [{title[:35]}]\n⏳ 𝗗𝘂𝗿𝗮𝘁𝗶𝗼𝗻 : `{duration}`\n👀 𝗩𝗶𝗲𝘄𝘀 : `{views}`\n\n📮 𝗕𝘆: {message.from_user.mention()}\n📤 𝗕𝘆 : @Movie_wrld_grp'
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
@@ -93,7 +93,7 @@ def a(client, message):
         print(e)
 
 
-@Client.on_message(filters.command(["video", "mp4"]))
+@Client.on_message(filters.command(["video", "v"]))
 async def vsong(client, message: Message):
     urlissed = get_text(message)
 
