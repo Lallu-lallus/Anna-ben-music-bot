@@ -98,15 +98,22 @@ def a(client, message):
         print(e)
 
 
-@Client.on_message(filters.command(["video", "v"]))
-async def vsong(client, message: Message):
+@Client.on_message(filters.command(["v", "video"]))
+async def ytmusic(client, message: Message):
+    global is_downloading
+    if is_downloading:
+        await message.reply_text(
+            "Another download is in progress, try again after sometime."
+        )
+        return
+
     urlissed = get_text(message)
 
     pablo = await client.send_message(
-        message.chat.id, f"**🔎 𝐒𝐞𝐚𝐫𝐜𝐡𝐢𝐧𝐠..** `{urlissed}`"
+        message.chat.id, f"`Finding {urlissed} From Youtube Servers. Please Wait.\n\n Uploading Slowed down Due to Heavy Traffic.!`"
     )
     if not urlissed:
-        await pablo.edit("Invalid Command Syntax Please Check help Menu To Know More!")
+        await pablo.edit("Invalid Command Syntax, Please Check Help Menu To Know More!")
         return
 
     search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
@@ -115,7 +122,7 @@ async def vsong(client, message: Message):
     mo = mio[0]["link"]
     thum = mio[0]["title"]
     fridayz = mio[0]["id"]
-    mio[0]["channel"]
+    thums = mio[0]["channel"]
     kekme = f"https://img.youtube.com/vi/{fridayz}/hqdefault.jpg"
     await asyncio.sleep(0.6)
     url = mo
@@ -133,17 +140,27 @@ async def vsong(client, message: Message):
         "quiet": True,
     }
     try:
-        with YoutubeDL(opts) as ytdl:
+        is_downloading = True
+        with youtube_dl.YoutubeDL(opts) as ytdl:
+            infoo = ytdl.extract_info(url, False)
+            duration = round(infoo["duration"] / 60)
+
+            if duration > DURATION_LIMIT:
+                await pablo.edit(
+                    f"❌ Videos longer than {DURATION_LIMIT} minute(s) aren't allowed, the provided video is {duration} minute(s)"
+                )
+                is_downloading = False
+                return
             ytdl_data = ytdl.extract_info(url, download=True)
-    except Exception as e:
-        await event.edit(event, f"**Download Failed** \n**Error :** `{str(e)}`")
+
+    except Exception:
+        # await pablo.edit(event, f"**Failed To Download** \n**Error :** `{str(e)}`")
+        is_downloading = False
         return
+
     c_time = time.time()
     file_stark = f"{ytdl_data['id']}.mp4"
-    capy = f"""
-**🏷️ Video:** [{thum}]({mo})
-**🎬 Requested by:** {message.from_user.mention}
-"""
+    capy = f"**Video Title ➠** `{thum}` \n**Requested Song :** `{urlissed}` \n**Source :** `{thums}` \n**Link :** `{mo}`"
     await client.send_video(
         message.chat.id,
         video=open(file_stark, "rb"),
@@ -156,11 +173,12 @@ async def vsong(client, message: Message):
         progress_args=(
             pablo,
             c_time,
-            f"**📥 Download** `{urlissed}`",
+            f"`Uploading {urlissed} Song From YouTube Music!`",
             file_stark,
         ),
     )
     await pablo.delete()
+    is_downloading = False
     for files in (sedlyf, file_stark):
         if files and os.path.exists(files):
             os.remove(files)
