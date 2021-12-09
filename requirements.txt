@@ -1,4 +1,5 @@
 Pyrogram==1.2.11
+pymongo[srv]==3.11.4
 TgCrypto==1.2.2
 ffmpeg-python
 pytgcalls==0.0.17
