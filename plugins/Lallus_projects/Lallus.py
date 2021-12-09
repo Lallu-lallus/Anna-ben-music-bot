@@ -9,7 +9,7 @@ from plugins.help_func.filters_mdb import(
 )
 
 from plugins.help_func.connections_mdb import active_connection
-from utils import get_file_id, parser, split_quotes
+from util import get_file_id, parser, split_quotes
 from info import ADMINS
 
 
