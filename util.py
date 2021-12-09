@@ -12,6 +12,20 @@ from plugins.help_func.users_chats_db import db
 from bs4 import BeautifulSoup
 import requests
 
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+BTN_URL_REGEX = re.compile(
+    r"(\[([^\[]+?)\]\((buttonurl|buttonalert):(?:/{0,2})(.+?)(:same)?\))"
+)
+
+imdb = IMDb() 
+
+BANNED = {}
+SMART_OPEN = '“'
+SMART_CLOSE = '”'
+START_CHAR = ('\'', '"', SMART_OPEN)
+
 def get_file_id(msg: Message):
     if msg.media:
         for message_type in (
