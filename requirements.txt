@@ -16,3 +16,4 @@ youtube-search-python==1.4.6
 yt_dlp
 aiohttp
 requests
+bs4
