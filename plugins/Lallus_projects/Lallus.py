@@ -8,7 +8,7 @@ from plugins.help_func.filters_mdb import(
    count_filters
 )
 
-from database.connections_mdb import active_connection
+from plugins.help_func.connections_mdb import active_connection
 from utils import get_file_id, parser, split_quotes
 from info import ADMINS
 
