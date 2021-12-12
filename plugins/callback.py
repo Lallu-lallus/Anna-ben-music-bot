@@ -148,7 +148,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 [
                     [
                         InlineKeyboardButton("ʏᴛ ᴠɪᴅᴇᴏ", callback_data="yt"),
-                        InlineKeyboardButton("ᴅᴇᴠ", url="https//t.me/lallu_tg")
+                        InlineKeyboardButton("ᴅᴇᴠ", url='https://t.me/EDIT_REPO')
                     ],
                     [
                         InlineKeyboardButton("sᴏɴɢ", callback_data="song"),
