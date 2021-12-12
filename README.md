@@ -1,15 +1,4 @@
 # Anna Ben music bot and vc player
-![GitHub Repo stars](https://img.shields.io/github/stars/AsmSafone/RadioPlayerV2?color=blue&style=flat)
-![GitHub forks](https://img.shields.io/github/forks/AsmSafone/RadioPlayerV2?color=green&style=flat)
-![GitHub issues](https://img.shields.io/github/issues/AsmSafone/RadioPlayerV2)
-![GitHub closed issues](https://img.shields.io/github/issues-closed/AsmSafone/RadioPlayerV2)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/AsmSafone/RadioPlayerV2)
-![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/AsmSafone/RadioPlayerV2)
-![GitHub contributors](https://img.shields.io/github/contributors/AsmSafone/RadioPlayerV2?style=flat)
-![GitHub repo size](https://img.shields.io/github/repo-size/AsmSafone/RadioPlayerV2?color=red)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/AsmSafone/RadioPlayerV2)
-![GitHub](https://img.shields.io/github/license/AsmSafone/RadioPlayerV2)
-[![Bot Support](https://img.shields.io/badge/Radio%20Player%20V2-support%20group-blue)](https://t.me/safothebot)
 
 
 An Telegram Bot to Play Nonstop Radio/Music in Channel or Group Voice Chats.
@@ -35,7 +24,7 @@ NOTE: Make Sure You Have Started A Voice Chat In Your Channel/Group Before Deplo
 1. `API_ID` : Get it from my.telegram.org
 2. `API_HASH` : Get it from my.telegram.org
 3. `BOT_TOKEN` : Get it from @Botfather
-4. `SESSION_STRING` : Generate it from [@genStr robot](http://t.me/genStr_robot) or [![genStr](https://img.shields.io/badge/repl.it-genStr-yellowgreen)](https://repl.it/@AsmSafone/genStr)
+4. `SESSION_STRING` : Generate it from [![genStr](https://img.shields.io/badge/repl.it-genStr-yellowgreen)](https://replit.com/@Lallulallus/genStr)
 5. `CHAT` : ID of Channel/Group where the bot plays Music/Radio.
 6. `LOG_GROUP` : Group to send Playlist, if CHAT is a Group.
 7. `ADMINS` : ID of users who can use admin commands.
@@ -94,7 +83,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>
 ```
 ## Credits
 
-- [Asm Safone](https://github.com/AsmSafone) [Dev]
+- [LALLU-LALLUS](https://github.com/lallu-lallus) [Dev]
 - [Dash Eclipse](https://github.com/dashezup) [Dev]
 - [Il'ya](https://github.com/MarshalX) [For tgcalls]
 - [Subin](https://github.com/subinps) [For bot support]
