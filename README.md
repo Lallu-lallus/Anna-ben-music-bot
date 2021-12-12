@@ -63,10 +63,6 @@ Edit **config.py** with your own values.
 $ python3 main.py
 ```
 
-## License
-```sh
-RadioPlayerV2, Telegram Voice Chat Bot
-Copyright (C) 2021  Asm Safone <https://t.me/AsmSafone>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
