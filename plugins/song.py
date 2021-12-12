@@ -30,13 +30,13 @@ def time_to_seconds(time):
 ## Commands --------------------------------
 
 
-@Client.on_message(filters.command(["song", "mp3"]) & ~filters.channel & ~filters.edited)
+@Client.on_message(filters.command(["song", "s"]) & ~filters.channel & ~filters.edited)
 def a(client, message):
     query = ''
     for i in message.command[1:]:
         query += ' ' + str(i)
     print(query)
-    m = message.reply('`🎧𝐅𝐢𝐧𝐝𝐢𝐧𝐠 𝐲𝐨𝐮𝐫 𝐬𝐨𝐧𝐠..... 𝐩𝐥𝐞𝐚𝐬𝐞 𝐰𝐚𝐢𝐭𝐞🎸`')
+    m = message.reply('`𝐀𝐦 𝐬𝐞𝐚𝐫𝐜𝐡𝐢𝐧𝐠 𝐚 𝐬𝐨𝐧𝐠 𝐟𝐨𝐫 𝐲𝐨𝐮.... 𝐈 𝐋𝐔𝐁 𝐔🙂`')
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = []
@@ -60,7 +60,7 @@ def a(client, message):
             #     m.edit("Exceeded 30mins cap")
             #     return
 
-            performer = f"[𝐋𝐚𝐥𝐥𝐮𝐬 𝐦𝐮𝐬𝐢𝐜𝐬]" 
+            performer = f"[𝐀𝐍𝐍𝐀 𝐒𝐄𝐑𝐕𝐄𝐑]" 
             thumb_name = f'thumb{message.message_id}.jpg'
             thumb = requests.get(thumbnail, allow_redirects=True)
             open(thumb_name, 'wb').write(thumb.content)
@@ -75,7 +75,7 @@ def a(client, message):
         )
         print(str(e))
         return
-    m.edit("`🎸𝐔𝐩𝐥𝐨𝐚𝐝𝐢𝐧𝐠.....💞𝐏𝐥𝐞𝐚𝐬𝐞 𝐰𝐚𝐢𝐭𝐞`")
+    m.edit("`𝐀𝐦 𝐮𝐩𝐥𝐨𝐚𝐝𝐢𝐧𝐠 𝐚 𝐬𝐨𝐧𝐠 𝐟𝐢𝐫 𝐲𝐨𝐮.... 𝐈 𝐋𝐔𝐁 𝐔🙂`")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
@@ -90,7 +90,7 @@ def a(client, message):
         m.delete()
         message.delete()
     except Exception as e:
-        m.edit('**An Error Occured. Please Report This To** @jospsupport !!')
+        m.edit('**An Error Occured. Please Report This To** @RX_BOTZ !!')
         print(e)
     try:
         os.remove(audio_file)
