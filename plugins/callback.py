@@ -147,12 +147,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("ʏᴛ ᴠɪᴅᴇᴏ", callback_data="yt"),
-                        InlineKeyboardButton("ᴅᴇᴠ", url='https://t.me/EDIT_REPO')
+                        InlineKeyboardButton("🎬𝐘𝐓 𝐕𝐈𝐃𝐄𝐎", callback_data="yt"),
+                        InlineKeyboardButton("🔇𝐌𝐔𝐓𝐄", callback_data="mute")
                     ],
                     [
-                        InlineKeyboardButton("sᴏɴɢ", callback_data="song"),
-                        InlineKeyboardButton("⚠︎ᴄʟᴏsᴇ", callback_data="close")
+                        InlineKeyboardButton("🎶𝐒𝐎𝐍𝐆", callback_data="song"),
+                        InlineKeyboardButton("🍔𝐁𝐀𝐍", callback_data="ban")
+                    ],
+                    [
+                        InlineKeyboardButton("⚠︎𝐂𝐋𝐎𝐒𝐄", callback_data="close")
                     ],
                 ]
             )      
@@ -163,6 +166,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
                   
     elif query.data=="song":
         await query.edit_message_text("🙋‍♂️ **Hi Bruh**, \n Here is the commands for song \n\n Download your fav songs🙂 \n\n 𝐔𝐒𝐔𝐀𝐋 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒 \n\n /song (song name) or /mp3",
+        reply_markup=InlineKeyboardMarkup(
+               [ 
+                   [
+                        InlineKeyboardButton("⚠︎ᴄʟᴏsᴇ", callback_data="close")
+                   ],
+               ]
+            )
+         )
+    elif query.data=="mute":
+        await query.edit_message_text("🙋‍♂️ **Hi Bruh**, \n\n 𒊹︎︎︎Here is the commands for MUTE \n\n 𒊹︎︎︎mute peoples in your group🙂 \n\n 𝐔𝐒𝐔𝐀𝐋 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒 \n\n /mute (user id or user name) or /unmute",
         reply_markup=InlineKeyboardMarkup(
                [ 
                    [
