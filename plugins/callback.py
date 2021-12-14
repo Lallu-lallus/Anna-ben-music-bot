@@ -155,7 +155,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
                         InlineKeyboardButton("🍔𝐁𝐀𝐍", callback_data="ban")
                     ],
                     [
-                        InlineKeyboardButton("⚠︎𝐂𝐋𝐎𝐒𝐄", callback_data="close")
+                        InlineKeyboardButton("⚠︎𝐂𝐋𝐎𝐒𝐄", callback_data="close"),
+                        InlineKeyboardButton("➪𝐁𝐀𝐂𝐊", callback_data="start"),
                     ],
                 ]
             )      
