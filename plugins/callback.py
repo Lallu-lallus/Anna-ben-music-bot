@@ -1,4 +1,7 @@
-
+#codes created by @lallu_tg
+#vc credits @safone
+#supporters @Edit_repo @rx_Botz
+#help @Joe_noob
 
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import Client, emoji
@@ -170,7 +173,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
                [ 
                    [
-                        InlineKeyboardButton("⚠︎ᴄʟᴏsᴇ", callback_data="close"),
+                        InlineKeyboardButton("⚠︎𝐂𝐋𝐎𝐒𝐄", callback_data="close"),
                         InlineKeyboardButton("➪𝐁𝐀𝐂𝐊", callback_data="help")
                    ],
                ]
@@ -181,7 +184,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         reply_markup=InlineKeyboardMarkup(
                [ 
                    [
-                        InlineKeyboardButton("⚠︎ᴄʟᴏsᴇ", callback_data="close"),
+                        InlineKeyboardButton("⚠︎𝐂𝐋𝐎𝐒𝐄", callback_data="close"),
                         InlineKeyboardButton("➪𝐁𝐀𝐂𝐊", callback_data="help")
                    ],
                ]
