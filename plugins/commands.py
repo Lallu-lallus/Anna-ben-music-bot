@@ -41,14 +41,14 @@ async def start(client, message):
     buttons = [
         [
         InlineKeyboardButton('ᴄʜᴀɴɴᴇʟ', url='https://t.me/team_annaben'),
-        InlineKeyboardButton('sᴜᴘᴘᴏʀᴛ', url='https://t.me/Annaben_support'),
+        InlineKeyboardButton('sᴜᴘᴘᴏʀᴛ', url='https://t.me/Annaben_support')
     ],
     [
         InlineKeyboardButton('ᴍᴏʀᴇ ʙᴏᴛs', url='https://t.me/tg_bots_updates'),
-        InlineKeyboardButton('ᴅᴇᴠ', url='https://t.me/lallu_tg'),
+        InlineKeyboardButton('ᴅᴇᴠ', url='https://t.me/lallu_tg')
     ],
     [
-        InlineKeyboardButton('ʜᴇʟᴘ', callback_data='help'),
+        InlineKeyboardButton('ʜᴇʟᴘ', callback_data='help')
         
     ]
     ]
