@@ -34,6 +34,7 @@ __(Join @RX_BOTZ For Support)__
 
 🏷️ **Developer: @Lallu_tg** 👑
 """
+pic
 
 @Client.on_message(filters.command('start'))
 async def start(client, message):
