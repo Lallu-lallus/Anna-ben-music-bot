@@ -57,5 +57,5 @@ async def start(client, message):
 
 
 @Client.on_message(filters.command("help"))
-async def show_help(client, message):
+async def help(client, message):
     await message.reply_text(HELP)
