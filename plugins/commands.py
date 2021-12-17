@@ -52,6 +52,8 @@ async def start(client, message):
     ]
     ]
     reply_markup = InlineKeyboardMarkup(buttons)
+    await await message.reply_photo("https://telegra.ph/file/5649d8111f0a45039e282.jpg")
+
     await message.reply(HOME_TEXT.format(message.from_user.first_name, message.from_user.id), reply_markup=reply_markup)
 
 
